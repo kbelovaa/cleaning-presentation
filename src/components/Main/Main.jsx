@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import requestImg from '../../images/request_img.png';
 import notificationImg from '../../images/notification_img.png';
 import responseImg from '../../images/response_img.png';
@@ -15,6 +15,19 @@ const Main = () => {
   const [text, setText] = useState('');
   const [isFormValid, setIsFormValid] = useState(true);
 
+  const contactUsRef = useRef(null);
+
+  const handleScroll = (ref) => {
+    const element = ref.current;
+
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const handleEmailChange = (email) => {
     setEmail(email);
 
@@ -25,14 +38,15 @@ const Main = () => {
   const handleMobileChange = (mobile) => {
     setMobile(mobile);
 
-    const isMobileValid = mobile === '' || /^[\d+ -]+$/.test(mobile);
+    const digitsOnly = mobile.replace(/\D/g, '');
+    const isMobileValid = mobile === '' || (/^[\d+ -]+$/.test(mobile) && digitsOnly.length >= 7);
     setIsMobileValid(isMobileValid);
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !surname || !email || !isEmailValid || !mobile || !isMobileValid) {
+    if (!name || !surname || !email || !isEmailValid || !mobile || !isMobileValid || !text) {
       setIsFormValid(false);
     }
   };
@@ -52,7 +66,9 @@ const Main = () => {
               requests. The first member to accept the job will be assigned to it with all details sent through the
               mobile app. This allows you full flexibility to set your own schedule and work when you want.
             </p>
-            <button className="btn">Contact us</button>
+            <button className="btn" onClick={() => handleScroll(contactUsRef)}>
+              Contact us
+            </button>
           </div>
         </div>
       </section>
@@ -128,7 +144,7 @@ const Main = () => {
         </div>
         <div className="background"></div>
       </section>
-      <section className="contact-us-section">
+      <section className="contact-us-section" ref={contactUsRef}>
         <div className="container">
           <div className="contact-us">
             <h2 className="title">
@@ -207,12 +223,21 @@ const Main = () => {
                       e.target.style.height = `${e.target.scrollHeight + 2}px`;
                     }}
                   ></textarea>
-                  <p className={!isFormValid && (!name || !email || !text) ? 'form__note' : 'hidden'}>
+                  <p
+                    className={
+                      !isFormValid && (!name || !surname || !email || !mobile || !text) ? 'form__note' : 'hidden'
+                    }
+                  >
                     Please fill in all fields
                   </p>
                 </div>
               </div>
-              <button className="btn" type="submit">
+              <button
+                className={`btn ${
+                  !name || !surname || !email || !isEmailValid || !mobile || !isMobileValid || !text ? 'inactive' : ''
+                }`}
+                type="submit"
+              >
                 Send
               </button>
             </form>

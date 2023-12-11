@@ -53,9 +53,7 @@
     cursor: default;
 
     &:hover,
-    &:active,
-    &:focus,
-    &:focus-visible {
+    &:active {
       background: #1a543f;
     }
   }
@@ -64,25 +62,8 @@
     background: #2b8f6c;
   }
 
-  &:active,
-  &:focus,
-  &:focus-visible {
+  &:active {
     background: #1b6349;
-  }
-
-  &_light {
-    background: rgba(38, 134, 100, 0.1);
-    color: #268664;
-
-    &:hover {
-      background: rgba(38, 134, 100, 0.08);
-    }
-
-    &:active,
-    &:focus,
-    &:focus-visible {
-      background: rgba(38, 134, 100, 0.2);
-    }
   }
 }
 

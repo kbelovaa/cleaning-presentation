@@ -8,7 +8,9 @@ const Header = () => (
     <header className="header-section">
       <div className="container">
         <div className="header">
-          <h1 className="header__title">Servicio <br /> de limpieza</h1>
+          <h1 className="header__title">
+            Servicio <br /> de limpieza
+          </h1>
           <div className="burger">
             <div className="burger__bar"></div>
             <div className="burger__bar"></div>
