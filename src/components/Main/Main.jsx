@@ -232,12 +232,7 @@ const Main = () => {
                   </p>
                 </div>
               </div>
-              <button
-                className={`btn ${
-                  !name || !surname || !email || !isEmailValid || !mobile || !isMobileValid || !text ? 'inactive' : ''
-                }`}
-                type="submit"
-              >
+              <button className="btn" type="submit">
                 Send
               </button>
             </form>
