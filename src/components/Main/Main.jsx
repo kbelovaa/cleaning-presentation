@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import requestImg from '../../images/request_img.png';
 import notificationImg from '../../images/notification_img.png';
 import responseImg from '../../images/response_img.png';
@@ -16,6 +17,9 @@ const Main = () => {
   const [isFormValid, setIsFormValid] = useState(true);
 
   const contactUsRef = useRef(null);
+
+  const { t, i18n } = useTranslation();
+  const { language } = i18n;
 
   const handleScroll = (ref) => {
     const element = ref.current;
@@ -56,46 +60,36 @@ const Main = () => {
       <section className="description-section">
         <div className="container">
           <div className="description">
-            <h2 className="title">
-              Would you like <br /> to work with us?
-            </h2>
-            <p className="description__text">
-              MFP is a new cleaning service where booking is as fast and simple as reserving an Uber. Our user-friendly
-              website and mobile app enable customers to request cleaning services, even on short notice, with just a
-              few clicks. As part of our team, you are equipped with a mobile app, where you will be receiving cleaning
-              requests. The first member to accept the job will be assigned to it with all details sent through the
-              mobile app. This allows you full flexibility to set your own schedule and work when you want.
-            </p>
+            <h2 className={`title description__title ${language}`}>{t('welcome')}</h2>
+            <p className="description__text">{t('about')}</p>
             <button className="btn" onClick={() => handleScroll(contactUsRef)}>
-              Contact us
+              {t('contact')}
             </button>
           </div>
         </div>
       </section>
       <section className="system-section">
         <div className="system">
-          <h2 className="title system__title">How the system works</h2>
+          <h2 className="title system__title">{t('howItWorks')}</h2>
           <div className="system__stages">
             <div className="system__stage">
-              <h3 className="system__subtitle">1. Request</h3>
-              <p className="system__text">
-                Request cleaning, even on short notice, with just a few clicks on the user-friendly website/mobile app
-              </p>
+              <h3 className="system__subtitle">1. {t('request')}</h3>
+              <p className="system__text">{t('requestDescription')}</p>
               <img className="system__img" src={requestImg} alt="Request screen" />
             </div>
             <div className="system__stage">
-              <h3 className="system__subtitle">2. Notification</h3>
-              <p className="system__text">Notifications of the request will be sent to you via the mobile app</p>
+              <h3 className="system__subtitle">2. {t('notification')}</h3>
+              <p className="system__text">{t('notificationDescription')}</p>
               <img className="system__img" src={notificationImg} alt="Notification screen" />
             </div>
             <div className="system__stage">
-              <h3 className="system__subtitle">3. Response</h3>
-              <p className="system__text">Accept the job, and all details are sent through the mobile app</p>
+              <h3 className="system__subtitle">3. {t('response')}</h3>
+              <p className="system__text">{t('responseDescription')}</p>
               <img className="system__img" src={responseImg} alt="Response screen" />
             </div>
             <div className="system__stage">
-              <h3 className="system__subtitle">4. Instant payments</h3>
-              <p className="system__text">Receive instant payment after completing each job</p>
+              <h3 className="system__subtitle">4. {t('instantPayments')}</h3>
+              <p className="system__text">{t('instantPaymentsDescription')}</p>
               <img className="system__img" src={paymentImg} alt="Payment screen" />
             </div>
           </div>
@@ -104,40 +98,31 @@ const Main = () => {
       <section className="join-section">
         <div className="container">
           <div className="join">
-            <h2 className="title">Why join us</h2>
-            <div className="join__reasons">
+            <h2 className="title">{t('whyJoinUs')}</h2>
+            <div className={`join__reasons ${language}`}>
               <div className="join__reason">
-                <h4 className="join__subtitle">Flexible</h4>
-                <p className="join__text">
-                  Choose your work hours to align with your personal preferences and lifestyle
-                </p>
+                <h4 className="join__subtitle">{t('flexible')}</h4>
+                <p className="join__text">{t('flexibleDescription')}</p>
               </div>
               <div className="join__reason">
-                <h4 className="join__subtitle">Technology</h4>
-                <p className="join__text">
-                  Accept requests, manage and streamline your work with the intuitive mobile app
-                </p>
+                <h4 className="join__subtitle">{t('technology')}</h4>
+                <p className="join__text">{t('technologyDescription')}</p>
               </div>
               <div className="join__reason">
-                <h4 className="join__subtitle">Payment</h4>
-                <p className="join__text">Receive payment after completing each job</p>
+                <h4 className="join__subtitle">{t('payment')}</h4>
+                <p className="join__text">{t('paymentDescription')}</p>
               </div>
               <div className="join__reason">
-                <h4 className="join__subtitle">Potential</h4>
-                <p className="join__text">
-                  Earn an additional 20% on expedited cleanings and up to 60% during off-peak hours including early
-                  mornings, late nights, and holidays
-                </p>
+                <h4 className="join__subtitle">{t('potential')}</h4>
+                <p className="join__text">{t('potentialDescription')}</p>
               </div>
               <div className="join__reason">
-                <h4 className="join__subtitle">Referrals</h4>
-                <p className="join__text">
-                  Refer a new customer and enjoy a 10% share of their bookings for an entire year
-                </p>
+                <h4 className="join__subtitle">{t('referrals')}</h4>
+                <p className="join__text">{t('referralsDescription')}</p>
               </div>
               <div className="join__reason">
-                <h4 className="join__subtitle">Compliance and Security</h4>
-                <p className="join__text">Full compliance with Spanish labour laws</p>
+                <h4 className="join__subtitle">{t('complianceAndSecurity')}</h4>
+                <p className="join__text">{t('complianceAndSecurityDescription')}</p>
               </div>
             </div>
           </div>
@@ -147,16 +132,12 @@ const Main = () => {
       <section className="contact-us-section" ref={contactUsRef}>
         <div className="container">
           <div className="contact-us">
-            <h2 className="title">
-              Interested?
-              <br />
-              Contact us here
-            </h2>
+            <h2 className="title contact-us__title">{t('joinUs')}</h2>
             <form className={`form ${isFormValid ? 'valid' : 'invalid'}`} onSubmit={handleFormSubmit}>
               <div className="form__fields">
                 <div className="form__field-wrap">
                   <label htmlFor="name" className="form__label">
-                    Name
+                    {t('name')}
                   </label>
                   <input
                     id="name"
@@ -169,7 +150,7 @@ const Main = () => {
                 </div>
                 <div className="form__field-wrap">
                   <label htmlFor="surname" className="form__label">
-                    Surname
+                    {t('surname')}
                   </label>
                   <input
                     id="surname"
@@ -182,7 +163,7 @@ const Main = () => {
                 </div>
                 <div className="form__field-wrap">
                   <label htmlFor="email" className="form__label">
-                    Email address
+                    {t('emailAddress')}
                   </label>
                   <input
                     id="email"
@@ -192,11 +173,11 @@ const Main = () => {
                     onChange={(e) => handleEmailChange(e.target.value)}
                     autoComplete="off"
                   />
-                  <p className={isEmailValid ? 'hidden' : 'form__note'}>Please enter a valid email address.</p>
+                  <p className={isEmailValid ? 'hidden' : 'form__note'}>{t('enterValidEmail')}</p>
                 </div>
                 <div className="form__field-wrap">
                   <label htmlFor="mobile" className="form__label">
-                    Mobile nr
+                    {t('mobileNumber')}
                   </label>
                   <input
                     id="mobile"
@@ -206,11 +187,11 @@ const Main = () => {
                     onChange={(e) => handleMobileChange(e.target.value)}
                     autoComplete="off"
                   />
-                  <p className={isMobileValid ? 'hidden' : 'form__note'}>Please enter a valid mobile number.</p>
+                  <p className={isMobileValid ? 'hidden' : 'form__note'}>{t('enterValidMobile')}</p>
                 </div>
                 <div className="form__field-wrap">
                   <label htmlFor="text" className="form__label">
-                    Text
+                    {t('text')}
                   </label>
                   <textarea
                     id="text"
@@ -228,12 +209,12 @@ const Main = () => {
                       !isFormValid && (!name || !surname || !email || !mobile || !text) ? 'form__note' : 'hidden'
                     }
                   >
-                    Please fill in all fields
+                    {t('fillAllFields')}
                   </p>
                 </div>
               </div>
               <button className="btn" type="submit">
-                Send
+                {t('send')}
               </button>
             </form>
           </div>
