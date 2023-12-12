@@ -1,4 +1,3 @@
-//+
 @font-face {
   font-family: 'SF Pro Display';
   src: url('../fonts/sfProDisplay-light.woff') format('woff');
@@ -11,30 +10,16 @@
   font-weight: 400;
 }
 
-//+
 @font-face {
   font-family: 'SF Pro Display';
   src: url('../fonts/sfProDisplay-medium.woff') format('woff');
   font-weight: 500;
 }
 
-//+
 @font-face {
   font-family: 'SF Pro Display';
   src: url('../fonts/sfProDisplay-semibold.woff') format('woff');
   font-weight: 600;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('../fonts/inter-regular.woff') format('woff');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Poppins';
-  src: url('../fonts/poppins-regular.woff') format('woff');
-  font-weight: 400;
 }
 
 * {
