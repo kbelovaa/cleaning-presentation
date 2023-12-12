@@ -3,15 +3,14 @@ import { useTranslation } from 'react-i18next';
 import './Footer.scss';
 
 const Footer = () => {
-  const { t, i18n } = useTranslation();
-  const { language } = i18n;
+  const { t } = useTranslation();
 
   return (
     <footer className="footer-section">
       <div className="container">
         <div className="footer">
           <p className="footer__text">{t('copyright')}</p>
-          <ul className={`footer__links ${language}`}>
+          <ul className="footer__links">
             <li>
               <a href="#" className="link footer__link">
                 {t('termsOfUse')}

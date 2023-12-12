@@ -15,6 +15,7 @@ const App = () => {
 
     if (storedLanguage) {
       i18n.changeLanguage(storedLanguage);
+      document.documentElement.lang = storedLanguage;
     }
   }, []);
 

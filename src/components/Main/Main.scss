@@ -96,12 +96,9 @@
   &__reasons {
     margin-top: 30px;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 550px;
 
-    &.es {
-      height: 625px;
+    &-col {
+      width: calc((100% - 20px) / 3);
     }
   }
 
@@ -109,7 +106,6 @@
     padding: 40px;
     border-radius: 10px;
     margin: 0 10px 10px 0;
-    width: calc((100% - 20px) / 3);
     background: #fff;
 
     &:nth-of-type(4) {

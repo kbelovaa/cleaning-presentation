@@ -5,46 +5,24 @@
   align-items: center;
   height: 200px;
 
-  @media screen and (max-width: 744px) {
-    height: 234px;
-  }
-
   &__text {
     font-size: 16px;
     font-weight: 300;
     line-height: normal;
     letter-spacing: 0.8px;
     color: #92a1a9;
-
-    @media screen and (max-width: 744px) {
-      max-width: 297px;
-      text-align: center;
-    }
   }
 
   &__links {
-    width: 405px;
     display: flex;
-    justify-content: space-between;
-    list-style-type: none;
     margin-top: 10px;
 
-    &.es {
-      width: 450px;
-    }
-
-    @media screen and (max-width: 744px) {
-      flex-direction: column;
-      align-items: center;
-      margin-top: 0;
-      width: 100%;
+    & li:last-of-type .footer__link {
+      margin-right: 0;
     }
   }
 
   &__link {
-    @media screen and (max-width: 744px) {
-      margin-top: 10px;
-      display: block;
-    }
+    margin-right: 10px;
   }
 }
