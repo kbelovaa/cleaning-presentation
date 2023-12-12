@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Footer/Footer';
@@ -10,6 +10,26 @@ const Header = () => {
   const { i18n } = useTranslation();
   const { language } = i18n;
   const availableLanguages = Object.keys(i18n.options.resources);
+
+  const lngRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (lngRef.current && !lngRef.current.contains(e.target)) {
+        setIsLanguageOpened(false);
+      }
+    };
+
+    if (isLanguageOpened) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLanguageOpened]);
 
   const openLanguages = () => {
     setIsLanguageOpened((state) => !state);
@@ -28,7 +48,7 @@ const Header = () => {
         <div className="container">
           <div className="header">
             <nav className="header__nav">
-              <div className={`language ${isLanguageOpened ? 'opened' : ''}`}>
+              <div className={`language ${isLanguageOpened ? 'opened' : ''}`} ref={lngRef}>
                 <div className="language__selected" onClick={openLanguages}>
                   <span className="language__value">{language}</span>
                   <svg

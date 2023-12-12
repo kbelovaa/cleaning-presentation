@@ -5,17 +5,30 @@
   align-items: center;
   height: 200px;
 
+  @media screen and (max-width: 1440px) {
+    height: 142px;
+  }
+
   &__text {
     font-size: 16px;
     font-weight: 300;
     line-height: normal;
     letter-spacing: 0.8px;
     color: #92a1a9;
+
+    @media screen and (max-width: 1440px) {
+      font-size: 11px;
+      letter-spacing: 0.569px;
+    }
   }
 
   &__links {
     display: flex;
     margin-top: 10px;
+
+    @media screen and (max-width: 1440px) {
+      margin-top: 7px;
+    }
 
     & li:last-of-type .footer__link {
       margin-right: 0;
@@ -24,5 +37,9 @@
 
   &__link {
     margin-right: 10px;
+
+    @media screen and (max-width: 1440px) {
+      margin-right: 7px;
+    }
   }
 }

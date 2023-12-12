@@ -5,6 +5,10 @@
 .container {
   width: 1440px;
   margin: 0 auto;
+
+  @media screen and (max-width: 1440px) {
+    width: 1024px;
+  }
 }
 
 .input {
@@ -19,6 +23,13 @@
   transition: all 0.3s ease;
   color: #3a3a3a;
   height: 56px;
+
+  @media screen and (max-width: 1440px) {
+    border-radius: 3px;
+    height: 40px;
+    padding: 10px 11px;
+    font-size: 13px;
+  }
 
   &:active,
   &:focus,
@@ -47,6 +58,14 @@
   color: #fff;
   transition: all 0.3s ease;
 
+  @media screen and (max-width: 1440px) {
+    border-radius: 3px;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    padding: 14px 57px;
+    height: 47px;
+  }
+
   &.inactive {
     background: #1a543f;
     color: #a3bbb3;
@@ -73,6 +92,11 @@
   line-height: 110%;
   letter-spacing: 1.8px;
   text-transform: uppercase;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 40px;
+    letter-spacing: 1.2px;
+  }
 }
 
 .link {
@@ -83,6 +107,11 @@
   color: #92a1a9;
   position: relative;
   transition: all 0.3s ease;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 11px;
+    letter-spacing: 0.569px;
+  }
 
   &::after {
     display: block;

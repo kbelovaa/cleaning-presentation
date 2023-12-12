@@ -1,14 +1,19 @@
 .header {
-  color: #717171;
-  text-transform: uppercase;
-  font-weight: 400;
-  line-height: 90%;
   padding: 54px 100px 300px;
   position: relative;
+
+  @media screen and (max-width: 1440px) {
+    padding: 38px 71px 0 71px;
+    height: 100vh;
+  }
 
   &-section {
     border-radius: 0 0 10px 10px;
     background: #f4f9f7;
+
+    @media screen and (max-width: 1440px) {
+      border-radius: 0 0 7px 7px;
+    }
   }
 
   &__nav {
@@ -16,6 +21,10 @@
     align-items: center;
     justify-content: end;
     margin-bottom: 204px;
+
+    @media screen and (max-width: 1440px) {
+      margin-bottom: calc((100vh - 168px) / 2 - 55px);
+    }
   }
 
   &__title {
@@ -25,6 +34,11 @@
     line-height: 120%;
     letter-spacing: 3px;
     text-transform: uppercase;
+
+    @media screen and (max-width: 1440px) {
+      font-size: 70px;
+      letter-spacing: 2.1px;
+    }
   }
 }
 
@@ -39,6 +53,12 @@
   overflow: hidden;
   transition: max-height 0.2s;
 
+  @media screen and (max-width: 1440px) {
+    top: 40px;
+    right: 120px;
+    max-height: 12px;
+  }
+
   &.opened {
     max-height: 200px;
   }
@@ -47,11 +67,24 @@
     display: flex;
     width: 45px;
     justify-content: space-between;
+
+    @media screen and (max-width: 1440px) {
+      width: 32px;
+    }
   }
 
   &__value {
     color: #b0b0b0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.7px;
     text-transform: uppercase;
+
+    @media screen and (max-width: 1440px) {
+      font-size: 10px;
+      letter-spacing: 0.498px;
+    }
 
     &.not-selected {
       color: #fff;
@@ -60,6 +93,11 @@
 
   &__arrow {
     transition: transform 0.2s;
+
+    @media screen and (max-width: 1440px) {
+      width: 11px;
+      height: 11px;
+    }
 
     .opened & {
       transform: rotate(180deg);
@@ -73,6 +111,10 @@
     margin-top: 5px;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 1440px) {
+      padding: 5px 10px;
+    }
 
     & .language__value {
       margin-bottom: 10px;
@@ -93,6 +135,12 @@
     border-radius: 47px;
     background: #000;
     margin-top: 5px;
+
+    @media screen and (max-width: 1440px) {
+      width: 21px;
+      height: 3px;
+      margin-top: 3px;
+    }
 
     &:first-of-type {
       margin-top: 0;
