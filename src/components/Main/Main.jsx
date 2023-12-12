@@ -4,6 +4,7 @@ import requestImg from '../../images/request_img.png';
 import notificationImg from '../../images/notification_img.png';
 import responseImg from '../../images/response_img.png';
 import paymentImg from '../../images/payment_img.png';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import './Main.scss';
 
 const Main = () => {
@@ -15,6 +16,7 @@ const Main = () => {
   const [isMobileValid, setIsMobileValid] = useState(true);
   const [text, setText] = useState('');
   const [isFormValid, setIsFormValid] = useState(true);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   const contactUsRef = useRef(null);
 
@@ -47,11 +49,22 @@ const Main = () => {
     setIsMobileValid(isMobileValid);
   };
 
+  const finishFormSending = () => {
+    setIsConfirmationOpen(true);
+    setName('');
+    setSurname('');
+    setMobile('');
+    setText('');
+    setIsFormValid(true);
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !surname || !email || !isEmailValid || !mobile || !isMobileValid || !text) {
       setIsFormValid(false);
+    } else {
+      finishFormSending();
     }
   };
 
@@ -220,6 +233,12 @@ const Main = () => {
           </div>
         </div>
       </section>
+      <ConfirmationModal
+        isOpen={isConfirmationOpen}
+        setIsOpen={setIsConfirmationOpen}
+        email={email}
+        setEmail={setEmail}
+      />
     </div>
   );
 };
