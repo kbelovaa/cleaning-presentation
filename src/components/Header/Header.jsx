@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import './Header.scss';
 
@@ -12,6 +12,10 @@ const Header = () => {
   const availableLanguages = Object.keys(i18n.options.resources);
 
   const lngRef = useRef(null);
+
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const isSurvey = pathname === '/survey';
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -47,6 +51,9 @@ const Header = () => {
       <header className="header-section">
         <div className="container">
           <div className="header">
+            <span className={`header__label ${isSurvey ? '' : 'header__label_hidden'}`} onClick={() => navigate('/')}>
+              Sdl
+            </span>
             <nav className="header__nav">
               <div className={`language ${isLanguageOpened ? 'opened' : ''}`} ref={lngRef}>
                 <div className="language__selected" onClick={openLanguages}>
@@ -85,9 +92,6 @@ const Header = () => {
                 <div className="burger__bar"></div>
               </div>
             </nav>
-            <h1 className="header__title">
-              Servicio <br /> de limpieza
-            </h1>
           </div>
         </div>
       </header>

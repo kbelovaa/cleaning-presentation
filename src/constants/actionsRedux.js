@@ -1,0 +1,3 @@
+const SET_IP_COUNTRY = 'SET_IP_COUNTRY';
+
+export { SET_IP_COUNTRY };

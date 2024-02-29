@@ -1,44 +1,45 @@
 .header {
-  padding: 54px 100px 0 100px;
-  height: 100vh;
+  padding: 54px 100px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @media screen and (max-width: 1440px) {
     padding: 38px 71px 0 71px;
   }
 
   &-section {
+    width: 100%;
     border-radius: 0 0 10px 10px;
-    background: #f4f9f7;
+    background: transparent;
+    position: absolute;
+    top: 0;
 
     @media screen and (max-width: 1440px) {
       border-radius: 0 0 7px 7px;
     }
   }
 
-  &__nav {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-bottom: calc((100vh - 240px) / 2 - 76px);
+  &__label {
+    color: #268664;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 90%;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.4s ease;
 
-    @media screen and (max-width: 1440px) {
-      margin-bottom: calc((100vh - 168px) / 2 - 55px);
+    &_hidden {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
-  &__title {
-    color: #268664;
-    font-size: 100px;
-    font-weight: 500;
-    line-height: 120%;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    @media screen and (max-width: 1440px) {
-      font-size: 70px;
-      letter-spacing: 2.1px;
-    }
+  &__nav {
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -127,8 +128,6 @@
 }
 
 .burger {
-  cursor: pointer;
-
   &__bar {
     width: 30px;
     height: 4px;

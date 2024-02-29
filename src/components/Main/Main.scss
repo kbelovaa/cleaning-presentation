@@ -1,3 +1,73 @@
+.intro {
+  padding: 130px 100px 100px 100px;
+  height: 1053px;
+
+  &-section {
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(118deg, rgba(244, 249, 247, 0.40) 0%, #F4F9F7 100%);
+  }
+
+  &__wrap {
+    border-radius: 10px;
+    border: 1px solid #FFF;
+    background: linear-gradient(114deg, rgba(38, 134, 100, 0.06) 0%, rgba(38, 134, 100, 0.10) 99.34%);
+    height: 100%;
+    padding: 0 100px;
+    display: flex;
+  }
+
+  &__title {
+    color: #268664;
+    font-size: 180px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 5.4px;
+    text-transform: uppercase;
+    margin: 100px 0 20px;
+  }
+
+  &__subtitle {
+    color: #268664;
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  &__text {
+    width: 647px;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 1.2px;
+  }
+
+  &__images {
+    position: relative;
+    width: 322px;
+    height: 659px;
+    margin: 82px 0 0 53px;
+
+    & .intro__img:first-of-type {
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+    }
+
+    & .intro__img:last-of-type {
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__img {
+    height: 425px;
+    position: absolute;
+  }
+}
+
 .description {
   padding: 150px 100px 300px;
 
@@ -261,85 +331,6 @@
   }
 
   &__title {
-    width: 620px;
-
-    @media screen and (max-width: 1440px) {
-      width: 450px;
-    }
-  }
-}
-
-.form {
-  &__fields {
-    display: flex;
-    flex-wrap: wrap;
-    width: 670px;
-    margin: 50px 0;
-
-    @media screen and (max-width: 1440px) {
-      width: 476px;
-      margin: 35px 0;
-    }
-  }
-
-  &__field-wrap {
-    width: calc((100% - 10px) / 2);
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    position: relative;
-
-    @media screen and (max-width: 1440px) {
-      width: calc((100% - 7px) / 2);
-      margin-bottom: 7px;
-    }
-
-    &:nth-of-type(2n) {
-      margin-left: 10px;
-
-      @media screen and (max-width: 1440px) {
-        margin-left: 7px;
-      }
-    }
-
-    &:last-of-type {
-      width: 100%;
-    }
-  }
-
-  &__label {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 130%;
-    letter-spacing: 0.36px;
-    display: inline-block;
-    margin-bottom: 5px;
-
-    @media screen and (max-width: 1440px) {
-      font-size: 12px;
-      letter-spacing: 0.24px;
-      margin-bottom: 3px;
-    }
-  }
-
-  &__note {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: normal;
-    margin-top: 5px;
-
-    @media screen and (max-width: 1440px) {
-      font-size: 11px;
-      margin-top: 3px;
-    }
-  }
-
-  &__message {
-    resize: none;
-    min-height: 112px;
-
-    @media screen and (max-width: 1440px) {
-      min-height: 80px;
-    }
+    margin-bottom: 50px;
   }
 }

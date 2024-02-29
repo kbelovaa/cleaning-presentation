@@ -1,27 +1,21 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import requestImg from '../../images/request_img.png';
-import notificationImg from '../../images/notification_img.png';
-import responseImg from '../../images/response_img.png';
-import paymentImg from '../../images/payment_img.png';
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import { useNavigate } from 'react-router-dom';
+import screen1En from '../../images/screen1_en.png';
+import screen2En from '../../images/screen2_en.png';
+import screen3En from '../../images/screen3_en.png';
+import screen1Es from '../../images/screen1_es.png';
+import screen2Es from '../../images/screen2_es.png';
+import screen3Es from '../../images/screen3_es.png';
 import './Main.scss';
 
 const Main = () => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
-  const [isEmailValid, setIsEmailValid] = useState(true);
-  const [mobile, setMobile] = useState('');
-  const [isMobileValid, setIsMobileValid] = useState(true);
-  const [text, setText] = useState('');
-  const [isFormValid, setIsFormValid] = useState(true);
-  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
-
   const contactUsRef = useRef(null);
 
   const { t, i18n } = useTranslation();
   const { language } = i18n;
+
+  const navigate = useNavigate();
 
   const handleScroll = (ref) => {
     const element = ref.current;
@@ -34,49 +28,39 @@ const Main = () => {
     }
   };
 
-  const handleEmailChange = (email) => {
-    setEmail(email);
-
-    const isEmailValid = email === '' || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/.test(email);
-    setIsEmailValid(isEmailValid);
-  };
-
-  const handleMobileChange = (mobile) => {
-    setMobile(mobile);
-
-    const digitsOnly = mobile.replace(/\D/g, '');
-    const isMobileValid = mobile === '' || (/^[\d+ -]+$/.test(mobile) && digitsOnly.length >= 7);
-    setIsMobileValid(isMobileValid);
-  };
-
-  const finishFormSending = () => {
-    setIsConfirmationOpen(true);
-    setName('');
-    setSurname('');
-    setMobile('');
-    setText('');
-    setIsFormValid(true);
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!name || !surname || !email || !isEmailValid || !mobile || !isMobileValid || !text) {
-      setIsFormValid(false);
-    } else {
-      finishFormSending();
-    }
-  };
-
   return (
     <div className="main">
+      <section className="intro-section">
+        <div className="container">
+          <div className="intro">
+            <div className="intro__wrap">
+              <div className="intro__info">
+                <h1 className="intro__title">Sdl</h1>
+                <h2 className="intro__subtitle">Servicio de limpieza</h2>
+                <p className="intro__text">{t('introText')}</p>
+              </div>
+              {language === 'en' ? (
+                <div className="intro__images">
+                  <img className="intro__img" src={screen2En} alt="Request screen" />
+                  <img className="intro__img" src={screen3En} alt="Payment screen" />
+                </div>
+              ) : (
+                <div className="intro__images">
+                  <img className="intro__img" src={screen2Es} alt="Request screen" />
+                  <img className="intro__img" src={screen3Es} alt="Payment screen" />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="description-section">
         <div className="container">
           <div className="description">
             <h2 className={`title description__title ${language}`}>{t('welcome')}</h2>
             <p className="description__text">{t('about')}</p>
             <button className="btn" onClick={() => handleScroll(contactUsRef)}>
-              {t('contact')}
+              {t('join')}
             </button>
           </div>
         </div>
@@ -86,24 +70,31 @@ const Main = () => {
           <h2 className="title system__title">{t('howItWorks')}</h2>
           <div className="system__stages">
             <div className="system__stage">
-              <h3 className="system__subtitle">1. {t('request')}</h3>
-              <p className="system__text">{t('requestDescription')}</p>
-              <img className="system__img" src={requestImg} alt="Request screen" />
-            </div>
-            <div className="system__stage">
-              <h3 className="system__subtitle">2. {t('notification')}</h3>
+              <h3 className="system__subtitle">1. {t('notification')}</h3>
               <p className="system__text">{t('notificationDescription')}</p>
-              <img className="system__img" src={notificationImg} alt="Notification screen" />
+              {language === 'en' ? (
+                <img className="system__img" src={screen1En} alt="Notification screen" />
+              ) : (
+                <img className="system__img" src={screen1Es} alt="Notification screen" />
+              )}
             </div>
             <div className="system__stage">
-              <h3 className="system__subtitle">3. {t('response')}</h3>
-              <p className="system__text">{t('responseDescription')}</p>
-              <img className="system__img" src={responseImg} alt="Response screen" />
+              <h3 className="system__subtitle">2. {t('accept')}</h3>
+              <p className="system__text">{t('acceptDescription')}</p>
+              {language === 'en' ? (
+                <img className="system__img" src={screen2En} alt="Request screen" />
+              ) : (
+                <img className="system__img" src={screen2Es} alt="Request screen" />
+              )}
             </div>
             <div className="system__stage">
-              <h3 className="system__subtitle">4. {t('instantPayments')}</h3>
+              <h3 className="system__subtitle">3. {t('instantPayments')}</h3>
               <p className="system__text">{t('instantPaymentsDescription')}</p>
-              <img className="system__img" src={paymentImg} alt="Payment screen" />
+              {language === 'en' ? (
+                <img className="system__img" src={screen3En} alt="Payment screen" />
+              ) : (
+                <img className="system__img" src={screen3Es} alt="Payment screen" />
+              )}
             </div>
           </div>
         </div>
@@ -152,99 +143,12 @@ const Main = () => {
         <div className="container">
           <div className="contact-us">
             <h2 className="title contact-us__title">{t('joinUs')}</h2>
-            <form className={`form ${isFormValid ? 'valid' : 'invalid'}`} onSubmit={handleFormSubmit}>
-              <div className="form__fields">
-                <div className="form__field-wrap">
-                  <label htmlFor="name" className="form__label">
-                    {t('name')}
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    className={`input ${!name ? 'invalid-field' : ''}`}
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    autoComplete="off"
-                  />
-                </div>
-                <div className="form__field-wrap">
-                  <label htmlFor="surname" className="form__label">
-                    {t('surname')}
-                  </label>
-                  <input
-                    id="surname"
-                    type="text"
-                    className={`input ${!surname ? 'invalid-field' : ''}`}
-                    value={surname}
-                    onChange={(e) => setSurname(e.target.value)}
-                    autoComplete="off"
-                  />
-                </div>
-                <div className="form__field-wrap">
-                  <label htmlFor="email" className="form__label">
-                    {t('emailAddress')}
-                  </label>
-                  <input
-                    id="email"
-                    type="text"
-                    className={`input ${!email || !isEmailValid ? 'invalid-field' : ''}`}
-                    value={email}
-                    onChange={(e) => handleEmailChange(e.target.value)}
-                    autoComplete="off"
-                  />
-                  <p className={isEmailValid ? 'hidden' : 'form__note'}>{t('enterValidEmail')}</p>
-                </div>
-                <div className="form__field-wrap">
-                  <label htmlFor="mobile" className="form__label">
-                    {t('mobileNumber')}
-                  </label>
-                  <input
-                    id="mobile"
-                    type="tel"
-                    className={`input ${!mobile || !isMobileValid ? 'invalid-field' : ''}`}
-                    value={mobile}
-                    onChange={(e) => handleMobileChange(e.target.value)}
-                    autoComplete="off"
-                  />
-                  <p className={isMobileValid ? 'hidden' : 'form__note'}>{t('enterValidMobile')}</p>
-                </div>
-                <div className="form__field-wrap">
-                  <label htmlFor="text" className="form__label">
-                    {t('text')}
-                  </label>
-                  <textarea
-                    id="text"
-                    rows="1"
-                    className={`input form__message ${!text ? 'invalid-field' : ''}`}
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    onInput={(e) => {
-                      e.target.style.height = 'auto';
-                      e.target.style.height = `${e.target.scrollHeight + 2}px`;
-                    }}
-                  ></textarea>
-                  <p
-                    className={
-                      !isFormValid && (!name || !surname || !email || !mobile || !text) ? 'form__note' : 'hidden'
-                    }
-                  >
-                    {t('fillAllFields')}
-                  </p>
-                </div>
-              </div>
-              <button className="btn" type="submit">
-                {t('send')}
-              </button>
-            </form>
+            <button className="btn" onClick={() => navigate('/survey')}>
+              {t('join')}
+            </button>
           </div>
         </div>
       </section>
-      <ConfirmationModal
-        isOpen={isConfirmationOpen}
-        setIsOpen={setIsConfirmationOpen}
-        email={email}
-        setEmail={setEmail}
-      />
     </div>
   );
 };
