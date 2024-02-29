@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import screen1En from '../../images/screen1_en.png';
@@ -10,23 +10,10 @@ import screen3Es from '../../images/screen3_es.png';
 import './Main.scss';
 
 const Main = () => {
-  const contactUsRef = useRef(null);
-
   const { t, i18n } = useTranslation();
   const { language } = i18n;
 
   const navigate = useNavigate();
-
-  const handleScroll = (ref) => {
-    const element = ref.current;
-
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth',
-      });
-    }
-  };
 
   return (
     <div className="main">
@@ -59,7 +46,7 @@ const Main = () => {
           <div className="description">
             <h2 className={`title description__title ${language}`}>{t('welcome')}</h2>
             <p className="description__text">{t('about')}</p>
-            <button className="btn" onClick={() => handleScroll(contactUsRef)}>
+            <button className="btn" onClick={() => navigate('/survey')}>
               {t('join')}
             </button>
           </div>
@@ -139,7 +126,7 @@ const Main = () => {
         </div>
         <div className="background"></div>
       </section>
-      <section className="contact-us-section" ref={contactUsRef}>
+      <section className="contact-us-section">
         <div className="container">
           <div className="contact-us">
             <h2 className="title contact-us__title">{t('joinUs')}</h2>
