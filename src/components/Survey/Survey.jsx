@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import sendData from '../../http/formAPI';
@@ -8,14 +8,14 @@ import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import './Survey.scss';
 
 const Survey = () => {
-  const user = useSelector((state) => state.user);
+  const ipCountry = useSelector((state) => state.user.ipCountry);
 
   const [answers, setAnswers] = useState({});
-  const [name, setName] = useState(user.name);
-  const [surname, setSurname] = useState(user.surname);
-  const [email, setEmail] = useState(user.email);
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [email, setEmail] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const [mobile, setMobile] = useState(user.mobile);
+  const [mobile, setMobile] = useState('');
   const [isMobileValid, setIsMobileValid] = useState(true);
   const [text, setText] = useState('');
   const [isFormValid, setIsFormValid] = useState(true);
@@ -23,6 +23,32 @@ const Survey = () => {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (ipCountry && sessionStorage.getItem('survey')) {
+      const survey = JSON.parse(sessionStorage.getItem('survey'));
+      setAnswers(survey.answers);
+      setName(survey.name);
+      setSurname(survey.surname);
+      setEmail(survey.email);
+      setMobile(`+${survey.mobile}`);
+      setText(survey.text);
+    }
+  }, [ipCountry]);
+
+  useEffect(() => {
+    const surveyState = {
+      answers,
+      name,
+      surname,
+      email,
+      mobile: mobile.replace(/^[+]+/, ''),
+      text
+    };
+    if (ipCountry) {
+      sessionStorage.setItem('survey', JSON.stringify(surveyState));
+    }
+  }, [answers, name, surname, email, mobile, text]);
 
   const handleAnswerChange = (questionId, answer) => {
     setAnswers((prevAnswers) => ({

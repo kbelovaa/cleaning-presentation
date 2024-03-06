@@ -76,7 +76,7 @@ i18n.use(initReactI18next).init({
         introText: 'SDL es un nuevo servicio de limpieza bajo demanda donde puedes establecer tu propio horario y radio de trabajo. Como parte de nuestro equipo, estarás equipado con nuestra aplicación móvil fácil de usar, donde recibirás solicitudes de limpieza dentro de tu radio. Y cuando aceptes el trabajo, todos los detalles serán enviados a través de la aplicación móvil, con pago instantáneo después de completar el trabajo.',
         welcome: '¿Te gustaría trabajar con nosotros?',
         about:
-          'Con SDL, tienes la libertad de moldear tu vida laboral según tus preferencias al establecer tus propias horas de trabajo y radio según lo desees, y realizar cambios fácilmente sobre la marcha, todo gracias a nuestra tecnología avanzada. El proceso es fluido: acepta solicitudes, administra tu trabajo y simplifica las operaciones sin esfuerzo a través de la intuitiva aplicación móvil. Recibe pago instantáneo después de completar cada trabajo y disfruta del potencial de ganancias adicionales, hasta un 200% durante las horas fuera de pico. Además, gana un 10% de las reservas durante todo un año al referir nuevos clientes. Operamos cumpliendo totalmente con las leyes laborales españolas y realizamos contribuciones a la seguridad social. ¡Únete a nosotros para un viaje de limpieza satisfactorio y gratificante!',
+          'Con SDL, tienes la libertad de moldear tu vida laboral según tus preferencias al establecer tus propias horas de trabajo y radio según lo desees, y realizar cambios fácilmente sobre la marcha, todo gracias a nuestra tecnología avanzada. El proceso es fluido: acepta solicitudes, administra tu trabajo y simplifica las operaciones sin esfuerzo a través de la intuitiva aplicación móvil. Recibe pago instantáneo después de completar cada trabajo y disfruta del potencial de ganancias adicionales, hasta un 200% nokturnidady festivos. Además, gana un 10% de las reservas durante todo un año al referir nuevos clientes. Operamos cumpliendo totalmente con las leyes laborales españolas y realizamos contribuciones a la seguridad social. ¡Únete a nosotros para un viaje de limpieza satisfactorio y gratificante!',
         join: 'Únete',
         howItWorks: 'Cómo funciona el sistema',
         notification: 'Notificación',
@@ -95,7 +95,7 @@ i18n.use(initReactI18next).init({
         paymentDescription: 'Recibe el pago después de completar cada trabajo.',
         potential: 'Potencial',
         potentialDescription:
-          'Gana un 20% adicional en limpiezas aceleradas y hasta un 60% durante las horas fuera de temporada, incluyendo las primeras horas de la mañana, las últimas de la noche y días festivos.',
+          'Gana un 20% adicional en limpiezas aceleradas y hasta un 200% nocturnidad y festivos, incluyendo las primeras horas de la mañana.',
         referrals: 'Referencias',
         referralsDescription: 'Refiere a un nuevo cliente y disfruta del 10% de sus reservas durante todo un año.',
         complianceAndSecurity: 'Cumplimiento y Seguridad',

@@ -3,7 +3,7 @@ import {
 } from '../../constants/actionsRedux';
 
 const defaultState = {
-  ipCountry: ''
+  ipCountry: '',
 };
 
 const userReducer = (state = defaultState, action) => {
