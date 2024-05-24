@@ -113,10 +113,6 @@ const Main = () => {
               </div>
               <div className="join__reasons-col">
                 <div className="join__reason">
-                  <h4 className="join__subtitle">{t('referrals')}</h4>
-                  <p className="join__text">{t('referralsDescription')}</p>
-                </div>
-                <div className="join__reason">
                   <h4 className="join__subtitle">{t('complianceAndSecurity')}</h4>
                   <p className="join__text">{t('complianceAndSecurityDescription')}</p>
                 </div>
